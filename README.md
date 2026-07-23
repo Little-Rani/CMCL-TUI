@@ -21,7 +21,7 @@
 
 ### 下载
 
-从 [Releases](https://github.com/kinich/console-minecraft-launcher/releases) 下载最新版本：
+从 [Releases]([https://github.com/Little-Rani/CMCL-TUI]) 下载最新版本：
 
 - `cmcl.jar` - 通用 JAR 包
 - `cmcl` - Linux/macOS 可执行文件
@@ -80,8 +80,8 @@ cmcl -s 1.21
 ## 构建
 
 ```shell
-git clone https://github.com/kinich/console-minecraft-launcher.git
-cd console-minecraft-launcher
+git clone https://github.com/Little-Rani/CMCL-TUI.git
+cd CMCL-TUI.git
 ./gradlew jar
 ```
 
