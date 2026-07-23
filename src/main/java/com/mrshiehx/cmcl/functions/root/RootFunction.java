@@ -22,6 +22,7 @@ package com.mrshiehx.cmcl.functions.root;
 import com.mrshiehx.cmcl.CMCL;
 import com.mrshiehx.cmcl.bean.arguments.*;
 import com.mrshiehx.cmcl.functions.Function;
+import com.mrshiehx.cmcl.tui.TUIApplication;
 import com.mrshiehx.cmcl.utils.Utils;
 import com.mrshiehx.cmcl.utils.cmcl.version.VersionUtils;
 
@@ -50,10 +51,13 @@ public class RootFunction implements Function {
                     case "about":
                         AboutPrinter.execute();
                         break;
-                    /*case "i":
+                    case "i":
                     case "immersive":
                         ImmersiveMode.getIn();
-                        break;*/
+                        break;
+                    case "tui":
+                        new TUIApplication().start();
+                        break;
                     case "c":
                     case "check-for-updates":
                         UpdatesChecker.execute();
@@ -100,7 +104,47 @@ public class RootFunction implements Function {
                         break;
                 }
             } else {
-                tryToStartVersion(originArray[0]);
+                Argument secondArgument = arguments.optArgument(1);
+                switch (key) {
+                    case "h":
+                    case "help":
+                        printHelp();
+                        break;
+                    case "a":
+                    case "about":
+                        AboutPrinter.execute();
+                        break;
+                    case "i":
+                    case "immersive":
+                        ImmersiveMode.getIn();
+                        break;
+                    case "tui":
+                        new TUIApplication().start();
+                        break;
+                    case "c":
+                    case "check-for-updates":
+                        UpdatesChecker.execute();
+                        break;
+                    case "l":
+                    case "list":
+                        VersionsLister.execute(secondArgument != null ? secondArgument.originArray[0] : null);
+                        break;
+                    case "s":
+                    case "select":
+                        if (secondArgument == null) {
+                            System.out.println(CMCL.getString("MESSAGE_TO_SELECT_VERSION"));
+                        } else {
+                            VersionSelector.execute(secondArgument.originArray[0]);
+                        }
+                        break;
+                    case "p":
+                    case "print":
+                        LaunchCommands.print(secondArgument != null ? secondArgument.originArray[0] : null);
+                        break;
+                    default:
+                        tryToStartVersion(originArray[0]);
+                        break;
+                }
             }
         } else {
             if (!(firstArgument instanceof TextArgument)) {
@@ -148,6 +192,9 @@ public class RootFunction implements Function {
                         version = secondArgument.originArray[0];
                     }
                     VersionStarter.execute(version);
+                    break;
+                case "tui":
+                    new TUIApplication().start();
                     break;
                 default:
                     System.out.println(getString("CONSOLE_IMMERSIVE_NOT_FOUND", key));
