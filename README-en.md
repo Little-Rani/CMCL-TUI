@@ -21,7 +21,7 @@ A Minecraft Java Edition launcher for the terminal, with TUI interface.
 
 ### Download
 
-Get the latest release from [Releases](https://github.com/kinich/console-minecraft-launcher/releases):
+Get the latest release from [Releases](https://github.com/Little-Rani/CMCL-TUI):
 
 - `cmcl.jar` - Universal JAR
 - `cmcl` - Linux/macOS executable
@@ -80,8 +80,8 @@ cmcl -s 1.21
 ## Build
 
 ```shell
-git clone https://github.com/kinich/console-minecraft-launcher.git
-cd console-minecraft-launcher
+git clone https://github.com/Little-Rani/CMCL-TUI
+cd CMCL-TUI
 ./gradlew jar
 ```
 
